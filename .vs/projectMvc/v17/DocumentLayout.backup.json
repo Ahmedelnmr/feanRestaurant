@@ -1,0 +1,194 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|d:\\\u0627\u0646\u0627\\c#2\\projectmvc\\projectmvc\\views\\shared\\_layout1.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|solutionrelative:projectmvc\\views\\shared\\_layout1.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|d:\\\u0627\u0646\u0627\\c#2\\projectmvc\\projectmvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|solutionrelative:projectmvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|d:\\\u0627\u0646\u0627\\c#2\\projectmvc\\projectmvc\\views\\user\\book.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|solutionrelative:projectmvc\\views\\user\\book.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|d:\\\u0627\u0646\u0627\\c#2\\projectmvc\\projectmvc\\views\\user\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|solutionrelative:projectmvc\\views\\user\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|d:\\\u0627\u0646\u0627\\c#2\\projectmvc\\projectmvc\\views\\shared\\_layout2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|solutionrelative:projectmvc\\views\\shared\\_layout2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|d:\\\u0627\u0646\u0627\\c#2\\projectmvc\\projectmvc\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|solutionrelative:projectmvc\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|d:\\\u0627\u0646\u0627\\c#2\\projectmvc\\projectmvc\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|solutionrelative:projectmvc\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|d:\\\u0627\u0646\u0627\\c#2\\projectmvc\\projectmvc\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|solutionrelative:projectmvc\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|d:\\\u0627\u0646\u0627\\c#2\\projectmvc\\projectmvc\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|solutionrelative:projectmvc\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|d:\\\u0627\u0646\u0627\\c#2\\projectmvc\\projectmvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{349712D0-6136-4A21-A798-8CC715C7E78D}|projectMvc\\projectMvc.csproj|solutionrelative:projectmvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 187,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Cart.cshtml",
+              "DocumentMoniker": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Views\\User\\Cart.cshtml",
+              "RelativeDocumentMoniker": "projectMvc\\Views\\User\\Cart.cshtml",
+              "ToolTip": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Views\\User\\Cart.cshtml",
+              "RelativeToolTip": "projectMvc\\Views\\User\\Cart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-30T09:17:29.232Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Layout2.cshtml",
+              "DocumentMoniker": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Views\\Shared\\_Layout2.cshtml",
+              "RelativeDocumentMoniker": "projectMvc\\Views\\Shared\\_Layout2.cshtml",
+              "ToolTip": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Views\\Shared\\_Layout2.cshtml",
+              "RelativeToolTip": "projectMvc\\Views\\Shared\\_Layout2.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-30T09:15:47.257Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "projectMvc\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Views\\Shared\\_Layout.cshtml*",
+              "RelativeToolTip": "projectMvc\\Views\\Shared\\_Layout.cshtml*",
+              "ViewState": "AgIAAEsAAABgMzMzMzMrwFwAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-30T09:14:34.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Book.cshtml",
+              "DocumentMoniker": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Views\\User\\Book.cshtml",
+              "RelativeDocumentMoniker": "projectMvc\\Views\\User\\Book.cshtml",
+              "ToolTip": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Views\\User\\Book.cshtml",
+              "RelativeToolTip": "projectMvc\\Views\\User\\Book.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAMAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-30T09:12:38.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "projectMvc\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Controllers\\UserController.cs",
+              "RelativeToolTip": "projectMvc\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAHwBAAAAAAAAAAAAAJ0BAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T09:09:46.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout1.cshtml",
+              "DocumentMoniker": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Views\\Shared\\_Layout1.cshtml",
+              "RelativeDocumentMoniker": "projectMvc\\Views\\Shared\\_Layout1.cshtml",
+              "ToolTip": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Views\\Shared\\_Layout1.cshtml",
+              "RelativeToolTip": "projectMvc\\Views\\Shared\\_Layout1.cshtml",
+              "ViewState": "AgIAAF8AAABAMzMzMzMrwEYAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-30T09:03:25.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "projectMvc\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "projectMvc\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAqwGQAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T08:56:47.284Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Views\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "projectMvc\\Views\\Account\\Register.cshtml",
+              "ToolTip": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Views\\Account\\Register.cshtml",
+              "RelativeToolTip": "projectMvc\\Views\\Account\\Register.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-30T08:55:05.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "projectMvc\\Views\\Account\\Login.cshtml",
+              "ToolTip": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "projectMvc\\Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACYAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-30T08:54:49.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Program.cs",
+              "RelativeDocumentMoniker": "projectMvc\\Program.cs",
+              "ToolTip": "D:\\\u0627\u0646\u0627\\c#2\\projectMvc\\projectMvc\\Program.cs",
+              "RelativeToolTip": "projectMvc\\Program.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAADEAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T08:53:51.655Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

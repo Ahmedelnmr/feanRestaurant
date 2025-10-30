@@ -1,0 +1,80 @@
+﻿@using projectMvc.Models.models
+@model Category
+
+@{
+    ViewData["Title"] = "Add New Category";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="form-container">
+    <div class="form-card">
+        <h3 class="form-title">Add New Category</h3>
+
+        <form asp-action="Addcategory" asp-controller="Admin" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">Description</label>
+                <textarea asp-for="Description" class="form-control custom-input" placeholder="Enter description" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+  
+            <button type="submit" class="btn btn-gold w-100 mt-3">Save</button>
+        </form>
+    </div>
+</div>
+
+
+    <style>
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            color: #fff;
+        }
+
+        .form-card {
+            background-color: var(--secondary-dark);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .form-title {
+            color: var(--gold);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+      .custom-input {
+    background-color: #fff !important;
+}
+
+
+
+
+        .custom-input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 5px rgba(255,190,51,0.4);
+        }
+    </style>
+
+        @section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+ 

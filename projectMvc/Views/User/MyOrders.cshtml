@@ -1,0 +1,182 @@
+﻿@model List<projectMvc.Models.models.Order>
+@{
+    ViewData["Title"] = "My Orders";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>
+                    <i class="fa fa-shopping-bag"></i> My Orders
+                </h2>
+                <a href="/User/Menu" class="btn" style="background-color: #ffbe33; color: white;">
+                    <i class="fa fa-plus"></i> New Order
+                </a>
+            </div>
+
+            @if (Model != null && Model.Any())
+            {
+                <div class="row">
+                    @foreach (var order in Model)
+                    {
+                        <div class="col-md-12 mb-4">
+                            <div class="card shadow-sm order-card">
+                                <div class="card-header" style="background-color: #222831; color: white;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-3">
+                                            <strong>
+                                                <i class="fa fa-hashtag"></i> Order No: @order.Id
+                                            </strong>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <span class="badge @GetStatusBadgeClass(order.Status) px-3 py-2">
+                                                @GetStatusText(order.Status)
+                                            </span>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <i class="fa fa-calendar"></i> @order.CreatedAt.ToString("dd/MM/yyyy")
+                                        </div>
+                                        <div class="col-md-3 text-end">
+                                            <strong style="font-size: 18px;">$@order.Total.ToString("F2")</strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <h6 class="mb-3">
+                                                <i class="fa fa-box"></i> Items (@order.OrderItems.Count)
+                                            </h6>
+                                            <div class="order-items">
+                                                @foreach (var item in order.OrderItems.Take(3))
+                                                {
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <img src="~/images/@item.ManuItem.Image" 
+                                                             style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px;" 
+                                                             class="me-3" />
+                                                        <div class="flex-grow-1">
+                                                            <strong>@item.ManuItem.Name</strong>
+                                                            <span class="text-muted ms-2">× @item.Quantity</span>
+                                                        </div>
+                                                        <span class="text-success fw-bold">$@item.Subtotal.ToString("F2")</span>
+                                                    </div>
+                                                }
+                                                @if (order.OrderItems.Count > 3)
+                                                {
+                                                    <small class="text-muted">
+                                                        + @(order.OrderItems.Count - 3) more items...
+                                                    </small>
+                                                }
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="order-info p-3 border rounded" style="background-color: #f8f9fa;">
+                                                <div class="mb-2">
+                                                    <i class="fa fa-shopping-cart text-muted"></i>
+                                                    <strong>Type:</strong> 
+                                                    <span class="badge bg-primary">@order.OrderType.ToString()</span>
+                                                </div>
+                                                @if (!string.IsNullOrEmpty(order.DeliveryAddress))
+                                                {
+                                                    <div class="mb-2">
+                                                        <i class="fa fa-map-marker-alt text-muted"></i>
+                                                        <strong>Address:</strong>
+                                                        <small class="d-block text-muted mt-1">
+                                                            @order.DeliveryAddress.Substring(0, Math.Min(50, order.DeliveryAddress.Length))...
+                                                        </small>
+                                                    </div>
+                                                }
+                                                @if (order.EstimatedDeliveryTime.HasValue)
+                                                {
+                                                    <div class="mb-2">
+                                                        <i class="fa fa-clock text-muted"></i>
+                                                        <strong>Estimated Time:</strong>
+                                                        <span class="text-success">@order.EstimatedDeliveryTime.Value.ToString("hh:mm tt")</span>
+                                                    </div>
+                                                }
+                                            </div>
+
+                                            <a href="/User/OrderDetails/@order.Id" class="btn btn-outline-primary w-100 mt-3">
+                                                <i class="fa fa-eye"></i> View Details
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="text-center p-5">
+                    <div class="mb-4">
+                        <i class="fa fa-shopping-bag" style="font-size: 120px; color: #dee2e6;"></i>
+                    </div>
+                    <h4 class="text-muted mb-3">No orders yet</h4>
+                    <p class="text-muted mb-4">Start your first order from our delicious menu!</p>
+                    <a href="/User/Menu" class="btn btn-lg" style="background-color: #ffbe33; color: white;">
+                        <i class="fa fa-utensils"></i> Browse Menu
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@functions {
+    string GetStatusBadgeClass(projectMvc.Models.models.OrderStatus status)
+    {
+        return status switch
+        {
+            projectMvc.Models.models.OrderStatus.Pending => "bg-warning text-dark",
+            projectMvc.Models.models.OrderStatus.Preparing => "bg-info",
+            projectMvc.Models.models.OrderStatus.Ready => "bg-success",
+            projectMvc.Models.models.OrderStatus.Delivered => "bg-primary",
+            projectMvc.Models.models.OrderStatus.Cancelled => "bg-danger",
+            _ => "bg-secondary"
+        };
+    }
+
+    string GetStatusText(projectMvc.Models.models.OrderStatus status)
+    {
+        return status switch
+        {
+            projectMvc.Models.models.OrderStatus.Pending => "Pending",
+            projectMvc.Models.models.OrderStatus.Preparing => "Preparing",
+            projectMvc.Models.models.OrderStatus.Ready => "Ready",
+            projectMvc.Models.models.OrderStatus.Delivered => "Delivered",
+            projectMvc.Models.models.OrderStatus.Cancelled => "Cancelled",
+            _ => status.ToString()
+        };
+    }
+}
+
+<style>
+    .order-card {
+        transition: all 0.3s ease;
+        border: none;
+    }
+
+    .order-card:hover {
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        transform: translateY(-3px);
+    }
+
+    .order-items {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    .order-info {
+        font-size: 14px;
+    }
+
+    .order-info i {
+        width: 20px;
+    }
+</style>

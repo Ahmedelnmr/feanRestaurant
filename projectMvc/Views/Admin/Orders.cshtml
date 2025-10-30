@@ -1,0 +1,474 @@
+﻿@model List<projectMvc.Models.models.Order>
+@{
+    ViewData["Title"] = "Orders Management";
+  Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<!-- Filter Section -->
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <label class="form-label">Filter by Status:</label>
+                <select class="form-select" id="statusFilter">
+                    <option value="">All Orders</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Preparing">Preparing</option>
+                    <option value="Ready">Ready</option>
+                    <option value="Delivered">Delivered</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Filter by Type:</label>
+                <select class="form-select" id="typeFilter">
+                    <option value="">All Types</option>
+                    <option value="DineIn">Dine In</option>
+                    <option value="Takeout">Takeout</option>
+                    <option value="Delivery">Delivery</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Search:</label>
+                <input type="text" class="form-control" id="searchInput" placeholder="Order ID or Customer...">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label d-block">&nbsp;</label>
+                <button class="btn btn-secondary w-100" onclick="resetFilters()">
+                    <i class="fas fa-redo"></i> Reset
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Statistics Cards -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="stat-card pending">
+            <div class="stat-icon">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-content">
+                <h3>@Model.Count(o => o.Status == projectMvc.Models.models.OrderStatus.Pending)</h3>
+                <p>Pending Orders</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card preparing">
+            <div class="stat-icon">
+                <i class="fas fa-fire"></i>
+            </div>
+            <div class="stat-content">
+                <h3>@Model.Count(o => o.Status == projectMvc.Models.models.OrderStatus.Preparing)</h3>
+                <p>In Kitchen</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card ready">
+            <div class="stat-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-content">
+                <h3>@Model.Count(o => o.Status == projectMvc.Models.models.OrderStatus.Ready)</h3>
+                <p>Ready Orders</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card delivered">
+            <div class="stat-icon">
+                <i class="fas fa-check-double"></i>
+            </div>
+            <div class="stat-content">
+                <h3>@Model.Count(o => o.Status == projectMvc.Models.models.OrderStatus.Delivered)</h3>
+                <p>Completed Today</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Orders Table -->
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">
+            <i class="fas fa-list"></i> All Orders (@Model.Count)
+        </h5>
+        <span class="badge bg-primary">Total Revenue: $@Model.Sum(o => o.Total).ToString("F2")</span>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0" id="ordersTable">
+                <thead class="table-light">
+                    <tr>
+                        <th width="8%">Order #</th>
+                        <th width="15%">Customer</th>
+                        <th width="10%">Type</th>
+                        <th width="12%">Date/Time</th>
+                        <th width="15%">Items</th>
+                        <th width="10%">Total</th>
+                        <th width="15%">Status</th>
+                        <th width="15%">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.OrderByDescending(o => o.CreatedAt))
+                    {
+                        <tr class="order-row" 
+                            data-status="@order.Status.ToString()" 
+                            data-type="@order.OrderType.ToString()"
+                            data-customer="@order.User.FullName"
+                            data-id="@order.Id">
+                            <td>
+                                <strong class="text-primary">#@order.Id</strong>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar-sm me-2">
+                                        @order.User.FullName?.Substring(0, 2).ToUpper()
+                                    </div>
+                                    <div>
+                                        <strong>@order.User.FullName</strong>
+                                        <small class="d-block text-muted">@order.User.Email</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="badge bg-@GetTypeBadgeColor(order.OrderType)">
+                                    <i class="fas fa-@GetTypeIcon(order.OrderType)"></i>
+                                    @order.OrderType.ToString()
+                                </span>
+                            </td>
+                            <td>
+                                <div>
+                                    <i class="fas fa-calendar text-muted"></i>
+                                    @order.CreatedAt.ToString("dd/MM/yyyy")
+                                </div>
+                                <small class="text-muted">
+                                    <i class="fas fa-clock"></i>
+                                    @order.CreatedAt.ToString("hh:mm tt")
+                                </small>
+                            </td>
+                            <td>
+                                <div class="items-preview">
+                                    @foreach (var item in order.OrderItems.Take(2))
+                                    {
+                                        <div class="item-pill">
+                                            @item.ManuItem.Name × @item.Quantity
+                                        </div>
+                                    }
+                                    @if (order.OrderItems.Count > 2)
+                                    {
+                                        <small class="text-muted">+@(order.OrderItems.Count - 2) more</small>
+                                    }
+                                </div>
+                            </td>
+                            <td>
+                                <strong class="text-success" style="font-size: 16px;">
+                                    $@order.Total.ToString("F2")
+                                </strong>
+                            </td>
+                            <td>
+                                <select class="form-select form-select-sm status-dropdown @GetStatusClass(order.Status)" 
+                                        data-order-id="@order.Id"
+                                        onchange="updateOrderStatus(@order.Id, this.value)">
+                             @foreach (var status in Enum.GetValues(typeof(projectMvc.Models.models.OrderStatus)))
+{
+    var isSelected = order.Status.ToString() == status.ToString();
+    <option value="@status" selected="@(isSelected ? "selected" : null)">
+        @GetStatusText(status.ToString())
+    </option>
+}
+
+                                </select>
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <button class="btn btn-outline-primary" 
+                                            onclick="viewOrderDetails(@order.Id)"
+                                            title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    @if (order.OrderType == projectMvc.Models.models.OrderType.Delivery)
+                                    {
+                                        <button class="btn btn-outline-info" 
+                                                onclick="viewAddress(@order.Id)"
+                                                title="View Address">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </button>
+                                    }
+                                    <button class="btn btn-outline-secondary" 
+                                            onclick="printOrder(@order.Id)"
+                                            title="Print">
+                                        <i class="fas fa-print"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Order Details Modal -->
+<div class="modal fade" id="orderDetailsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-receipt"></i> Order Details
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="orderDetailsContent">
+                <!-- Details will be loaded here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    string GetTypeBadgeColor(projectMvc.Models.models.OrderType type)
+    {
+        return type switch
+        {
+            projectMvc.Models.models.OrderType.DineIn => "primary",
+            projectMvc.Models.models.OrderType.Takeout => "info",
+            projectMvc.Models.models.OrderType.Delivery => "warning",
+            _ => "secondary"
+        };
+    }
+
+    string GetTypeIcon(projectMvc.Models.models.OrderType type)
+    {
+        return type switch
+        {
+            projectMvc.Models.models.OrderType.DineIn => "utensils",
+            projectMvc.Models.models.OrderType.Takeout => "shopping-bag",
+            projectMvc.Models.models.OrderType.Delivery => "motorcycle",
+            _ => "question"
+        };
+    }
+
+    string GetStatusClass(projectMvc.Models.models.OrderStatus status)
+    {
+        return status switch
+        {
+            projectMvc.Models.models.OrderStatus.Pending => "status-pending",
+            projectMvc.Models.models.OrderStatus.Preparing => "status-preparing",
+            projectMvc.Models.models.OrderStatus.Ready => "status-ready",
+            projectMvc.Models.models.OrderStatus.Delivered => "status-delivered",
+            projectMvc.Models.models.OrderStatus.Cancelled => "status-cancelled",
+            _ => ""
+        };
+    }
+
+    string GetStatusText(string status)
+    {
+        return status switch
+        {
+            "Pending" => "⏳ Pending",
+            "Preparing" => "🔥 Preparing",
+            "Ready" => "✅ Ready",
+            "Delivered" => "✔️ Delivered",
+            "Cancelled" => "❌ Cancelled",
+            _ => status
+        };
+    }
+}
+
+<style>
+    .stat-card {
+        padding: 20px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .stat-card.pending { background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%); color: #000; }
+    .stat-card.preparing { background: linear-gradient(135deg, #17a2b8 0%, #138496 100%); color: white; }
+    .stat-card.ready { background: linear-gradient(135deg, #28a745 0%, #218838 100%); color: white; }
+    .stat-card.delivered { background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); color: white; }
+
+    .stat-icon {
+        font-size: 40px;
+        margin-right: 20px;
+        opacity: 0.8;
+    }
+
+    .stat-content h3 {
+        font-size: 32px;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    .stat-content p {
+        margin: 0;
+        font-size: 14px;
+        opacity: 0.9;
+    }
+
+    .avatar-sm {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    .items-preview {
+        font-size: 12px;
+    }
+
+.item-pill {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* خلفية متدرجة */
+    color: #ffffff;       /* الخط أبيض */
+    font-size: 14px;      /* حجم الخط مناسب للتوليفه */
+    padding: 5px 12px;    /* حشو متناسق */
+    border-radius: 12px;
+    display: inline-block;
+    margin: 2px;
+    border: 1px solid #5a4f9e; /* حدود متناسقة مع التدرج */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* ظل خفيف */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.item-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+    .status-dropdown {
+        font-weight: 600;
+        border: 2px solid;
+        cursor: pointer;
+    }
+
+    .status-pending { background-color: #fff3cd; border-color: #ffc107; color: #856404; }
+    .status-preparing { background-color: #d1ecf1; border-color: #17a2b8; color: #0c5460; }
+    .status-ready { background-color: #d4edda; border-color: #28a745; color: #155724; }
+    .status-delivered { background-color: #d1ecf1; border-color: #007bff; color: #004085; }
+    .status-cancelled { background-color: #f8d7da; border-color: #dc3545; color: #721c24; }
+
+    .order-row:hover {
+        background-color: #f8f9fa;
+    }
+
+    .table th {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 12px;
+        color: #6c757d;
+    }
+</style>
+
+<script>
+    // Filter functionality
+    document.getElementById('statusFilter').addEventListener('change', filterOrders);
+    document.getElementById('typeFilter').addEventListener('change', filterOrders);
+    document.getElementById('searchInput').addEventListener('input', filterOrders);
+
+    function filterOrders() {
+        const statusFilter = document.getElementById('statusFilter').value.toLowerCase();
+        const typeFilter = document.getElementById('typeFilter').value.toLowerCase();
+        const searchText = document.getElementById('searchInput').value.toLowerCase();
+
+        const rows = document.querySelectorAll('.order-row');
+        
+        rows.forEach(row => {
+            const status = row.dataset.status.toLowerCase();
+            const type = row.dataset.type.toLowerCase();
+            const customer = row.dataset.customer.toLowerCase();
+            const orderId = row.dataset.id;
+
+            const statusMatch = !statusFilter || status === statusFilter;
+            const typeMatch = !typeFilter || type === typeFilter;
+            const searchMatch = !searchText || customer.includes(searchText) || orderId.includes(searchText);
+
+            if (statusMatch && typeMatch && searchMatch) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    function resetFilters() {
+        document.getElementById('statusFilter').value = '';
+        document.getElementById('typeFilter').value = '';
+        document.getElementById('searchInput').value = '';
+        filterOrders();
+    }
+
+    // Update order status
+    function updateOrderStatus(orderId, newStatus) {
+        if (!confirm(`Are you sure you want to change the order status to ${newStatus}?`)) {
+            location.reload();
+            return;
+        }
+
+        fetch(`/Admin/UpdateOrderStatus`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ orderId: orderId, status: newStatus })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showToast('Status updated successfully!', 'success');
+                setTimeout(() => location.reload(), 1000);
+            } else {
+                showToast('Failed to update status', 'error');
+                location.reload();
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showToast('An error occurred', 'error');
+        });
+    }
+
+    function viewOrderDetails(orderId) {
+        fetch(`/Admin/OrderDetails/${orderId}`)
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('orderDetailsContent').innerHTML = html;
+                new bootstrap.Modal(document.getElementById('orderDetailsModal')).show();
+            });
+    }
+
+    function viewAddress(orderId) {
+        alert('Address viewing functionality - Order #' + orderId);
+    }
+
+    function printOrder(orderId) {
+        window.open(`/Admin/PrintOrder/${orderId}`, '_blank');
+    }
+
+    function showToast(message, type) {
+        const toast = document.createElement('div');
+        toast.className = `alert alert-${type === 'success' ? 'success' : 'danger'} position-fixed top-0 end-0 m-3`;
+        toast.style.zIndex = '9999';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+</script>
