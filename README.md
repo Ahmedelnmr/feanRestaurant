@@ -4,11 +4,11 @@ An ASP.NET Core MVC restaurant web app: customers browse a menu, order and reser
 
 ## Features
 
-- **Accounts**: register and log in (ASP.NET Core Identity, session support).
-- **Menu**: categories and menu items, with an admin screen to create items.
-- **Cart and orders**: cart items, orders and order items.
-- **Table reservations**.
-- **Daily menu item statistics** for the admin.
+- Accounts: register and log in (ASP.NET Core Identity, session support).
+- Menu: categories and menu items, with an admin screen to create items.
+- Cart and orders: cart items, orders and order items.
+- Table reservations.
+- Daily menu item statistics for the admin.
 - Separate Admin and User controllers.
 
 ## Tech stack
@@ -28,7 +28,3 @@ dotnet run --project projectMvc
 ```
 
 The app opens on the login page.
-
-## Author
-
-Ahmed Elnmr, https://github.com/Ahmedelnmr
